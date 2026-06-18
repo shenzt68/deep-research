@@ -17,6 +17,8 @@ const ANTHROPIC_API_BASE_URL =
   process.env.ANTHROPIC_API_BASE_URL || "https://api.anthropic.com";
 const DEEPSEEK_API_BASE_URL =
   process.env.DEEPSEEK_API_BASE_URL || "https://api.deepseek.com";
+const ATLASCLOUD_API_BASE_URL =
+  process.env.ATLASCLOUD_API_BASE_URL || "https://api.atlascloud.ai";
 const XAI_API_BASE_URL = process.env.XAI_API_BASE_URL || "https://api.x.ai";
 const MISTRAL_API_BASE_URL =
   process.env.MISTRAL_API_BASE_URL || "https://api.mistral.ai";
@@ -34,6 +36,8 @@ const TAVILY_API_BASE_URL =
   process.env.TAVILY_API_BASE_URL || "https://api.tavily.com";
 const FIRECRAWL_API_BASE_URL =
   process.env.FIRECRAWL_API_BASE_URL || "https://api.firecrawl.dev";
+const CRW_API_BASE_URL =
+  process.env.CRW_API_BASE_URL || "https://fastcrw.com/api";
 const EXA_API_BASE_URL = process.env.EXA_API_BASE_URL || "https://api.exa.ai";
 const BOCHA_API_BASE_URL =
   process.env.BOCHA_API_BASE_URL || "https://api.bochaai.com";
@@ -102,6 +106,10 @@ export default async function Config(phase: string) {
           destination: `${DEEPSEEK_API_BASE_URL}/:path*`,
         },
         {
+          source: "/api/ai/atlascloud/:path*",
+          destination: `${ATLASCLOUD_API_BASE_URL}/:path*`,
+        },
+        {
           source: "/api/ai/xai/:path*",
           destination: `${XAI_API_BASE_URL}/:path*`,
         },
@@ -132,6 +140,10 @@ export default async function Config(phase: string) {
         {
           source: "/api/search/firecrawl/:path*",
           destination: `${FIRECRAWL_API_BASE_URL}/:path*`,
+        },
+        {
+          source: "/api/search/crw/:path*",
+          destination: `${CRW_API_BASE_URL}/:path*`,
         },
         {
           source: "/api/search/exa/:path*",

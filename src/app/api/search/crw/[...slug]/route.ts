@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { SEARXNG_BASE_URL } from "@/constants/urls";
+import { CRW_BASE_URL } from "@/constants/urls";
 
 export const runtime = "edge";
 export const preferredRegion = [
@@ -13,14 +13,10 @@ export const preferredRegion = [
   "kix1",
 ];
 
-const API_PROXY_BASE_URL = process.env.SEARXNG_API_BASE_URL || SEARXNG_BASE_URL;
+const API_PROXY_BASE_URL = process.env.CRW_API_BASE_URL || CRW_BASE_URL;
 
 export async function POST(req: NextRequest) {
-  let body;
-  if (req.method.toUpperCase() !== "GET") {
-    const text = await req.text();
-    body = text ? JSON.parse(text) : null;
-  }
+  const body = await req.json();
   const searchParams = req.nextUrl.searchParams;
   const path = searchParams.getAll("slug");
   searchParams.delete("slug");
@@ -33,9 +29,10 @@ export async function POST(req: NextRequest) {
       method: req.method,
       headers: {
         "Content-Type": req.headers.get("Content-Type") || "application/json",
+        Authorization: req.headers.get("Authorization") || "",
       },
+      body: JSON.stringify(body),
     };
-    if (body) payload.body = JSON.stringify(body);
     const response = await fetch(url, payload);
     return new NextResponse(response.body, response);
   } catch (error) {

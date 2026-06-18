@@ -29,6 +29,10 @@ export interface SettingStore {
   deepseekApiProxy: string;
   deepseekThinkingModel: string;
   deepseekNetworkingModel: string;
+  atlasCloudApiKey: string;
+  atlasCloudApiProxy: string;
+  atlasCloudThinkingModel: string;
+  atlasCloudNetworkingModel: string;
   xAIApiKey: string;
   xAIApiProxy: string;
   xAIThinkingModel: string;
@@ -62,6 +66,8 @@ export interface SettingStore {
   tavilyScope: string;
   firecrawlApiKey: string;
   firecrawlApiProxy: string;
+  crwApiKey: string;
+  crwApiProxy: string;
   exaApiKey: string;
   exaApiProxy: string;
   exaScope: string;
@@ -126,6 +132,10 @@ export const defaultValues: SettingStore = {
   deepseekApiProxy: "",
   deepseekThinkingModel: "deepseek-reasoner",
   deepseekNetworkingModel: "deepseek-chat",
+  atlasCloudApiKey: "",
+  atlasCloudApiProxy: "",
+  atlasCloudThinkingModel: "deepseek-ai/deepseek-v4-pro",
+  atlasCloudNetworkingModel: "qwen/qwen3-235b-a22b",
   xAIApiKey: "",
   xAIApiProxy: "",
   xAIThinkingModel: "",
@@ -157,6 +167,8 @@ export const defaultValues: SettingStore = {
   tavilyScope: "general",
   firecrawlApiKey: "",
   firecrawlApiProxy: "",
+  crwApiKey: "",
+  crwApiProxy: "",
   exaApiKey: "",
   exaApiProxy: "",
   exaScope: "research paper",
